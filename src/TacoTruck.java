@@ -13,9 +13,4 @@ public class TacoTruck extends JFrame {
 
     }
 
-    public static void main(String[] args) {
-
-        new TacoTruck();
-
-    }
 }

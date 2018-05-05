@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 
-import java.lang.management.BufferPoolMXBean;
 
 
 
@@ -14,6 +13,13 @@ public class Presenter {
 
 
     private final TacoTruck view;
+
+    public void activateTacoButtonListener() {
+        ((OrderPanel) this.getCurrentScreen())
+                .getTacoButton()
+                .addActionListener(new TacoButtonActionListener());
+
+    }
 
 
     private void setCurrentScreen(JPanel screen) {
@@ -38,7 +44,7 @@ public class Presenter {
 
         setCurrentScreen(new TacoTruckWelcomePanel());
 
-        ((TacoTruckWelcomePanel)this.getCurrentScreen())
+        ((TacoTruckWelcomePanel) this.getCurrentScreen())
                 .getStartButton()
                 .addActionListener(new StartButtonActionListener());
 
@@ -60,17 +66,20 @@ public class Presenter {
 
     private class StartButtonActionListener implements ActionListener {
 
-
         @Override
-
         public void actionPerformed(ActionEvent e) {
             String customerName = ((TacoTruckWelcomePanel)getCurrentScreen()).getCustomerNameField().getText();
             setCurrentScreen(new OrderPanel(customerName));
             getCurrentScreen().revalidate();
-
-
         }
+    }
 
+    private class TacoButtonActionListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ((OrderPanel) getCurrentScreen()).addItemToOrder(new Taco());
+        }
     }
 
 

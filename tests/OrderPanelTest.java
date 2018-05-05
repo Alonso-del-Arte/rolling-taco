@@ -1,8 +1,19 @@
+import org.junit.Before;
 import org.junit.Test;
+
+import javax.swing.*;
 
 import static org.junit.Assert.*;
 
 public class OrderPanelTest {
+
+    OrderPanel orderPanel;
+
+    @Before
+    public void setUp() {
+        orderPanel = new OrderPanel("Mr. Customer");
+    }
+
 
     @Test
     public void test_OrderHasCustomerName() {
@@ -12,5 +23,19 @@ public class OrderPanelTest {
         assertEquals("Julia", orderPanel2.getCustomerName());
 
     }
+
+    @Test
+    public void testOrderHasAddTacoButton() {
+
+        assertEquals("Taco", ((JButton) orderPanel.getComponents()[1]).getName());
+    }
+
+    @Test
+    public void testTacoOrderButtonDoesAddTacoToOrder() {
+        JButton addTacoButton = ((JButton) orderPanel.getComponents()[1]);
+        addTacoButton.doClick();
+        assertEquals(1, orderPanel.getNumberofItems());
+    }
+
 
 }
