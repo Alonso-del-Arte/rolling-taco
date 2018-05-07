@@ -7,6 +7,7 @@ public class OrderPanel extends JPanel {
     private Order order;
 
     public OrderPanel(String customerName) {
+        this.setName("TacoTruckOrderPanel");
         this.customerName = customerName;
         order = new Order(customerName);
         this.add(new JLabel("Order for: " + customerName));
