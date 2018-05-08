@@ -1,3 +1,7 @@
+package view;
+
+import model.Order;
+
 import javax.swing.*;
 
 public class OrderPanel extends JPanel {
@@ -5,6 +9,7 @@ public class OrderPanel extends JPanel {
     private String customerName;
     private JButton addTacoButton;
     private Order order;
+    private JTextArea provisionalOrderSummaryTextArea;
 
     public OrderPanel(String customerName) {
         this.setName("TacoTruckOrderPanel");
@@ -14,22 +19,23 @@ public class OrderPanel extends JPanel {
         addTacoButton = new JButton("Taco");
         addTacoButton.setName("Taco");
         this.add(addTacoButton);
-
+        provisionalOrderSummaryTextArea = new JTextArea();
+        this.add(provisionalOrderSummaryTextArea);
     }
 
-    public String getCustomerName() {
-
+    String getCustomerName() {
         return customerName;
-
     }
 
     public int getNumberofItems() {
         return this.order.getOrderSize();
     }
 
-
-    public void addItemToOrder(Taco taco) {
+    public void addItemToOrder(model.Taco taco) {
         this.order.addItem(taco);
+        System.out.println(getNumberofItems());
+        String updateString = "One " + taco.toString() + " added to order. Subtotal so far: $" + this.order.getSubtotal() + "\n";
+        provisionalOrderSummaryTextArea.append(updateString);
     }
 
     public JButton getTacoButton() {
