@@ -1,3 +1,5 @@
+package view;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +12,7 @@ public class TacoTruckWelcomePanel extends JPanel {
 
     public TacoTruckWelcomePanel() {
 
-        this.setName("TacoTruckWelcomePanel");
+        this.setName("view.TacoTruckWelcomePanel");
         JLabel customerNameLabel = new JLabel("Enter Customer Name");
         this.add(customerNameLabel);
         customerNameField = new JTextField(20);
@@ -24,21 +26,11 @@ public class TacoTruckWelcomePanel extends JPanel {
     }
 
     public JButton getStartButton() {
-       return this.startButton;
+        return this.startButton;
     }
 
     public JTextField getCustomerNameField() {
-       return this.customerNameField;
+        return this.customerNameField;
     }
 
-
-
-
-
-
 }
-
-
-
-
-
