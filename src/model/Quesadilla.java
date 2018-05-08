@@ -1,4 +1,6 @@
-public class Quesadilla extends ConsumableItem{
+package model;
+
+public class Quesadilla extends ConsumableItem {
 
     private boolean hasMeat = false;
 
@@ -14,6 +16,5 @@ public class Quesadilla extends ConsumableItem{
         this.hasMeat = true;
         this.setUnitPrice(this.getUnitPrice()+1);
     }
-
 
 }
